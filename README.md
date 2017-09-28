@@ -4,7 +4,16 @@ If you want a currently working version of puppet bridges then head over [here](
 ## Installation
 * Clone matrix-puppet-bridge, use the development branch and run `npm link`
 * Clone matrix-puppet-skype, use the development branch, run `npm link matrix-puppet-bridge` and then `npm link`
-* Clone this, run `npm link matrix-puppet-bridge`, `npm link matrix-puppet-skype` and then `npm install` and `npm start`.
+* Clone this, run `npm link matrix-puppet-bridge`, `npm link matrix-puppet-skype` and then `npm install`
+* Copy `config.sample.json` to `config.json` and change example values to your configuration
+* Generate registration file via command: `node dist/index.js -r -u "http://your-bridge-server:8090"`
+* Add full path to generated `registration.yaml` file in Synapse config `homeserver.yaml` file: 
+```
+app_service_config_files:
+ - /full/path/to/registration.yaml
+```
+* Restart matrix-synapse
+* Start matrix-puppet-server: `npm start`
 
 # matrix-puppet-server
 
